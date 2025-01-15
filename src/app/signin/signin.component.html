@@ -1,0 +1,69 @@
+<div class="wrapper">
+  <div class="container main">
+    <div class="row">
+      <div class="col-md-6 side-image">
+        <img src="{{ path }}" alt="{{ alttext }}">
+      </div>
+
+      <div class="col-md-6 right">
+        <div class="input-box">
+          <label class="lbl">Welcome to <strong>ScanEase</strong></label>
+          <header class="headerr">Sign In</header>
+
+          <form [formGroup]="formLogin" (ngSubmit)="handleLogin()" style="margin-top: -22px;">
+            <!-- Email Field -->
+            <div class="input-field">
+              <input
+                formControlName="email"
+                type="email"
+                class="input"
+                id="email"
+                [ngClass]="{ 'is-invalid': formLogin.controls['email'].invalid && formLogin.controls['email'].touched }"
+                required
+                autocomplete="off">
+              <label for="email">Email</label>
+              <!-- <div *ngIf="formLogin.controls['email'].touched && formLogin.controls['email'].errors" class="error">
+                <span *ngIf="formLogin.controls['email'].errors['required']">Email is required.</span>
+                <span *ngIf="formLogin.controls['email'].errors['email']">Please enter a valid email address.</span>
+              </div> -->
+            </div>
+
+            <!-- Password Field -->
+            <div class="input-field">
+              <input
+                formControlName="password"
+                type="password"
+                class="input"
+                id="password"
+                [ngClass]="{ 'is-invalid': formLogin.controls['password'].invalid && formLogin.controls['password'].touched }"
+                required>
+              <label for="password">Password</label>
+              <!-- <div *ngIf="formLogin.controls['password'].touched && formLogin.controls['password'].errors" class="error">
+                <span *ngIf="formLogin.controls['password'].errors['required']">Password is required.</span>
+                <span *ngIf="formLogin.controls['password']?.errors?.['minlength']">Password must be at least 6 characters long.</span>
+              </div> -->
+            </div>
+
+            <br>
+            <!-- Submit Button -->
+            <div class="input-field">
+              <button
+                type="submit"
+                class="btn btn-success"
+                [disabled]="formLogin.invalid">
+                Sign In
+              </button>
+            </div>
+          </form>
+
+          <div class="signin">
+            <span>Don't have an account? <a routerLink="/signup">Sign up here</a></span>
+          </div>
+          <div class="forgot-password">
+            <a routerLink="/forgot-password">Forgot Password?</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

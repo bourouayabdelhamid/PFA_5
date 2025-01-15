@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="card mt-5">
+      <div class="card-header">
+          <h5>Extraction de la Carte d'Identité</h5>
+      </div>
+      <div class="card-body">
+          <!-- Section d'upload d'image -->
+          <div class="image-upload mb-4">
+              <input type="file" (change)="onFileSelected($event)" accept="image/*" hidden #fileInput />
+              <button class="btn btn-primary" (click)="fileInput.click()">Choisir une photo / Prendre une photo</button>
+              <button class="btn btn-info" (click)="openCamera()">Ouvrir la caméra</button>
+              <button class="btn btn-warning" (click)="captureImage()">Capturer l'image</button>
+          </div>
+
+          <!-- Aperçu du flux vidéo si la caméra est ouverte -->
+          <div class="video-preview mb-4" *ngIf="video">
+              <video #videoElement [srcObject]="video.srcObject" autoplay class="w-100 rounded shadow"></video>
+          </div>
+
+          <!-- Aperçu de l'image sélectionnée -->
+          <div class="image-preview mb-4" *ngIf="selectedImage">
+              <img [src]="selectedImage" alt="Image sélectionnée" class="img-fluid rounded shadow">
+          </div>
+
+          <!-- Affichage des données extraites -->
+          <div *ngIf="extractedData" class="data-output">
+              <div class="mb-3">
+                  <label for="firstName" class="form-label">Prénom</label>
+                  <input type="text" id="firstName" class="form-control" [value]="extractedData.first_name" readonly />
+              </div>
+              <div class="mb-3">
+                  <label for="lastName" class="form-label">Nom</label>
+                  <input type="text" id="lastName" class="form-control" [value]="extractedData.last_name" readonly />
+              </div>
+              <div class="mb-3">
+                  <label for="dob" class="form-label">Date de Naissance</label>
+                  <input type="text" id="dob" class="form-control" [value]="extractedData.date_of_birth" readonly />
+              </div>
+              <div class="mb-3">
+                  <label for="placeOfBirth" class="form-label">Lieu de Naissance</label>
+                  <input type="text" id="placeOfBirth" class="form-control" [value]="extractedData.place_of_birth" readonly />
+              </div>
+              <div class="mb-3">
+                  <label for="idCode" class="form-label">Code ID</label>
+                  <input type="text" id="idCode" class="form-control" [value]="extractedData.id_code" readonly />
+              </div>
+          </div>
+
+          <!-- Affichage des messages d'erreur -->
+          <div *ngIf="errorMessage" class="error-message text-danger mt-3">
+              <i class="bi bi-exclamation-triangle-fill"></i> {{ errorMessage }}
+          </div>
+      </div>
+  </div>
+</div>

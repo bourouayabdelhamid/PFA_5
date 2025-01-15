@@ -1,0 +1,130 @@
+<div class="wrapper">
+  <div class="container main">
+    <div class="row">
+      <div class="col-md-6 side-image">
+        <img src="{{ path }}" alt="{{ alttext }}">
+        <div class="text">
+          <p></p>
+        </div>
+      </div>
+
+      <div class="col-md-6 right">
+        <div class="input-box">
+          <label class="lbl">Welcome to <strong>ScanEase</strong></label>
+          <header class="headerr">Sign Up</header>
+          <form [formGroup]="formSignUp" (ngSubmit)="handleSignup()" style="margin-top: -22px;">
+
+            <!-- First Name -->
+            <div class="input-field">
+              <input
+                formControlName="firstName"
+                type="text"
+                class="input"
+                id="firstName"
+                autocomplete="off"
+              />
+              <label for="firstName">First Name</label>
+              <!-- <div *ngIf="formControls['firstName']?.invalid && (formControls['firstName']?.touched || formControls['firstName']?.dirty)">
+                <small class="text-danger" *ngIf="formControls['firstName']?.errors?.['required']">
+                  First name is required.
+                </small>
+              </div> -->
+            </div>
+
+            <!-- Last Name -->
+            <div class="input-field">
+              <input
+                formControlName="lastName"
+                type="text"
+                class="input"
+                id="lastName"
+                autocomplete="off"
+              />
+              <label for="lastName">Last Name</label>
+              <!-- <div *ngIf="formControls['lastName']?.invalid && (formControls['lastName']?.touched || formControls['lastName']?.dirty)">
+                <small class="text-danger" *ngIf="formControls['lastName']?.errors?.['required']">
+                  Last name is required.
+                </small>
+              </div> -->
+            </div>
+
+            <!-- Email -->
+            <div class="input-field">
+              <input
+                formControlName="email"
+                type="email"
+                class="input"
+                id="email"
+                autocomplete="off"
+              />
+              <label for="email">Email</label>
+              <!-- <div *ngIf="formControls['email']?.invalid && (formControls['email']?.touched || formControls['email']?.dirty)">
+                <small class="text-danger" *ngIf="formControls['email']?.errors?.['required']">
+                  Email is required.
+                </small>
+                <small class="text-danger" *ngIf="formControls['email']?.errors?.['email']">
+                  Please enter a valid email address.
+                </small>
+              </div> -->
+            </div>
+
+            <!-- Password -->
+            <div class="input-field">
+              <input
+                formControlName="password"
+                type="password"
+                class="input"
+                id="password"
+              />
+              <label for="password">Password</label>
+              <!-- <div *ngIf="formControls['password']?.invalid && (formControls['password']?.touched || formControls['password']?.dirty)">
+                <small class="text-danger" *ngIf="formControls['password']?.errors?.['required']">
+                  Password is required.
+                </small>
+                <small class="text-danger" *ngIf="formControls['password']?.errors?.['minlength']">
+                  Password must be at least 6 characters long.
+                </small>
+              </div> -->
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="input-field">
+              <input
+                formControlName="confirmPassword"
+                type="password"
+                class="input"
+                id="confirmPassword"
+              />
+              <label for="confirmPassword">Confirm Password</label>
+              <!-- <div *ngIf="formControls['confirmPassword']?.invalid && (formControls['confirmPassword']?.touched || formControls['confirmPassword']?.dirty)">
+                <small class="text-danger" *ngIf="formControls['confirmPassword']?.errors?.['required']">
+                  Confirming your password is required.
+                </small>
+              </div>
+              <div *ngIf="formSignUp.hasError('passwordMismatch')">
+                <small class="text-danger">
+                  Passwords do not match.
+                </small>
+              </div> -->
+            </div>
+
+            <!-- Submit Button -->
+            <div class="input-field">
+              <button
+                type="submit"
+                class="btn btn-primary signup"
+                [disabled]="formSignUp.invalid">
+                Sign Up
+              </button>
+            </div>
+          </form>
+
+          <!-- Sign In Redirect -->
+          <div class="signin">
+            <span>Already have an account? <a routerLink="/signin">Sign in here</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
