@@ -22,10 +22,10 @@
                 required
                 autocomplete="off">
               <label for="email">Email</label>
-              <!-- <div *ngIf="formLogin.controls['email'].touched && formLogin.controls['email'].errors" class="error">
+              <div *ngIf="formLogin.controls['email'].touched && formLogin.controls['email'].errors" class="error">
                 <span *ngIf="formLogin.controls['email'].errors['required']">Email is required.</span>
                 <span *ngIf="formLogin.controls['email'].errors['email']">Please enter a valid email address.</span>
-              </div> -->
+              </div>
             </div>
 
             <!-- Password Field -->
@@ -38,10 +38,10 @@
                 [ngClass]="{ 'is-invalid': formLogin.controls['password'].invalid && formLogin.controls['password'].touched }"
                 required>
               <label for="password">Password</label>
-              <!-- <div *ngIf="formLogin.controls['password'].touched && formLogin.controls['password'].errors" class="error">
+              <div *ngIf="formLogin.controls['password'].touched && formLogin.controls['password'].errors" class="error">
                 <span *ngIf="formLogin.controls['password'].errors['required']">Password is required.</span>
                 <span *ngIf="formLogin.controls['password']?.errors?.['minlength']">Password must be at least 6 characters long.</span>
-              </div> -->
+              </div>
             </div>
 
             <br>
