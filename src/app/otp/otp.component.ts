@@ -22,43 +22,43 @@ export class OtpComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    // this.email = this.authService.getUserEmail(); // Récupérer l'email de l'utilisateur
-    // console.log('User Email retrieved:', this.email);
-    // this.startTimer();
+    this.email = this.authService.getUserEmail(); // Récupérer l'email de l'utilisateur
+    console.log('User Email retrieved:', this.email);
+    this.startTimer();
   }
 
-  // startTimer(): void {
-  //   this.timerSubscription = interval(1000).subscribe(() => {
-  //     if (this.timeLeft > 0) {
-  //       this.timeLeft--;
-  //     } else {
-  //       this.timerSubscription.unsubscribe();
-  //       this.toastr.warning('L’OTP a expiré. Veuillez en demander un nouveau.', 'OTP Expiré');
-  //     }
-  //   });
-  // }
+  startTimer(): void {
+    this.timerSubscription = interval(1000).subscribe(() => {
+      if (this.timeLeft > 0) {
+        this.timeLeft--;
+      } else {
+        this.timerSubscription.unsubscribe();
+        this.toastr.warning('L’OTP a expiré. Veuillez en demander un nouveau.', 'OTP Expiré');
+      }
+    });
+  }
 
-  // verifyOtp(): void {
-  //   if (this.timeLeft <= 0) {
-  //     this.toastr.error('OTP expiré. Veuillez en demander un nouveau.', 'Erreur OTP');
-  //     return;
-  //   }
+  verifyOtp(): void {
+    if (this.timeLeft <= 0) {
+      this.toastr.error('OTP expiré. Veuillez en demander un nouveau.', 'Erreur OTP');
+      return;
+    }
 
-  //   this.authService.verifyOtp(this.email, this.otp).subscribe({
-  //     next: (response) => {
-  //       if (response === 'OTP validé avec succès.') {
-  //         this.toastr.success('OTP validé avec succès.', 'Succès');
-  //         this.router.navigate(['/id-card-extraction']);
-  //       }
-  //       else{
-  //         this.toastr.error(response, 'Erreur OTP');
-  //       }
-  //     },
-  //     error: (err) => {
-  //       this.toastr.error('OTP invalide ou erreur de connexion.', 'Erreur OTP');
-  //     },
-  //   });
-  // }
+    this.authService.verifyOtp(this.email, this.otp).subscribe({
+      next: (response) => {
+        if (response === 'OTP validé avec succès.') {
+          this.toastr.success('OTP validé avec succès.', 'Succès');
+          this.router.navigate(['/id-card-extraction']);
+        }
+        else{
+          this.toastr.error(response, 'Erreur OTP');
+        }
+      },
+      error: (err) => {
+        this.toastr.error('OTP invalide ou erreur de connexion.', 'Erreur OTP');
+      },
+    });
+  }
 
   ngOnDestroy(): void {
     if (this.timerSubscription) {

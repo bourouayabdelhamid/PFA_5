@@ -39,16 +39,16 @@ export class AuthService {
     return this.http.post(`${this.baseUrl}/register`, payload, { headers });
   }
  // Vérification de l'OTP
-  // verifyOtp(email: string, otp: string): Observable<string> {
-  //   const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
-  //   const body = new URLSearchParams();
-  //   body.set('email', email);
-  //   body.set('otp', otp);
-  //   return this.http.post(`${this.baseUrl}/verify-otp`, body.toString(), {
-  //     headers,
-  //     responseType: 'text',
-  //   });
-  // }
+  verifyOtp(email: string, otp: string): Observable<string> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const body = new URLSearchParams();
+    body.set('email', email);
+    body.set('otp', otp);
+    return this.http.post(`${this.baseUrl}/verify-otp`, body.toString(), {
+      headers,
+      responseType: 'text',
+    });
+  }
 
 
 
@@ -92,7 +92,6 @@ export class AuthService {
       this.isAuthenticated = false;
     }
   }
-
   public getEmailFromToken(): string | null {
     const token = this.getToken(); // Récupérer le token depuis le localStorage
     console.log('Token récupéré :', token); // Debugging
@@ -111,17 +110,17 @@ export class AuthService {
   }
 
 
-  // sendOtp(email: string): Observable<string> {
-  //   const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
-  //   const body = new URLSearchParams();
-  //   body.set('email', email);
+  sendOtp(email: string): Observable<string> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const body = new URLSearchParams();
+    body.set('email', email);
 
-  //   // Ajouter `responseType: 'text'` pour gérer une réponse en texte brut
-  //   return this.http.post(`${this.baseUrl}/send-otp`, body.toString(), {
-  //     headers,
-  //     responseType: 'text',
-  //   });
-  // }
+    // Ajouter `responseType: 'text'` pour gérer une réponse en texte brut
+    return this.http.post(`${this.baseUrl}/send-otp`, body.toString(), {
+      headers,
+      responseType: 'text',
+    });
+  }
 
 
    // Sauvegarder l'email utilisateur

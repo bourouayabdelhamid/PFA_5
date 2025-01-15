@@ -49,7 +49,7 @@ export class SigninComponent implements OnInit {
           this.toastr.success('Login successful!', 'Success');
 
           // Appeler sendOtp après le login
-          //this.sendOtp(email);
+          this.sendOtp(email);
         },
         error: (error) => {
           console.error(error);
@@ -63,17 +63,17 @@ export class SigninComponent implements OnInit {
 
 
 
-  // private sendOtp(email: string): void {
-  //   this.authService.sendOtp(email).subscribe({
-  //     next: (response) => {
-  //       console.log('OTP sent successfully:', response);
-  //       this.toastr.info('OTP has been sent to your email.', 'OTP Sent');
-  //       this.router.navigate(['/otp']);
-  //     },
-  //     error: (err) => {
-  //       console.error('Error sending OTP:', err);
-  //       this.toastr.error('Failed to send OTP. Please try again.', 'OTP Error');
-  //     },
-  //   });
-  // }
+  private sendOtp(email: string): void {
+    this.authService.sendOtp(email).subscribe({
+      next: (response) => {
+        console.log('OTP sent successfully:', response);
+        this.toastr.info('OTP has been sent to your email.', 'OTP Sent');
+        this.router.navigate(['/otp']);
+      },
+      error: (err) => {
+        console.error('Error sending OTP:', err);
+        this.toastr.error('Failed to send OTP. Please try again.', 'OTP Error');
+      },
+    });
+  }
 }
